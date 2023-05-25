@@ -9,8 +9,7 @@ import pandas as pd
 app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
-def hello_world():
-
+def emotion_prediction():
     prediction = ""
 
     if request.method == "POST":
@@ -40,10 +39,7 @@ def hello_world():
 
             prediction = my_model.predict(ans)
             prediction = encoder.inverse_transform(prediction)
-
-   
-          
-
+            
     return render_template('index.html', predicted_emotion=prediction)
 
 
